@@ -1,0 +1,273 @@
+/*
+Theme Name: UEElx
+Author: IRP
+Description: Plantilla para prácticas
+Version: 1.0
+*/
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+    line-height: 1.6;
+    padding-top: 96px;
+}
+
+/* Navegación superior */
+nav,
+.navbar,
+.menu-principal {
+    width: 100%;
+    background: #111827;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Lista del menú */
+nav ul,
+.navbar ul,
+.menu-principal ul,
+.menu {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 85px;
+    width: 100%;
+    padding: 0 24px;
+}
+
+/* Elementos del menú */
+nav li,
+.navbar li,
+.menu-principal li,
+.menu li {
+    display: inline-block;
+}
+
+.menu-principal .menu>li {
+    display: flex;
+    align-items: center;
+    min-height: 85px;
+}
+
+/* Enlaces */
+nav a,
+.navbar a,
+.menu-principal a,
+.menu a {
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 6px;
+    font-family: "Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Hover */
+nav a:hover,
+.navbar a:hover,
+.menu-principal a:hover,
+.menu a:hover {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* Contenido general */
+main,
+.container,
+.contenedor {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 32px 0;
+}
+
+/* Títulos */
+h1,
+h2,
+h3 {
+    font-family: inherit;
+    margin-bottom: 16px;
+    color: #111827;
+}
+
+/* Párrafos */
+p {
+    margin-bottom: 16px;
+}
+
+/* Enlaces generales */
+a {
+    color: #2563eb;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+
+    nav,
+    .navbar,
+    .menu-principal {
+        position: static;
+    }
+
+    nav ul,
+    .navbar ul,
+    .menu-principal ul,
+    .menu {
+        flex-direction: column;
+        padding: 12px;
+        min-height: auto;
+    }
+
+    nav a,
+    .navbar a,
+    .menu-principal a,
+    .menu a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Submenús desplegables */
+.menu-principal .menu li {
+    position: relative;
+}
+
+/* Ocultar submenús por defecto */
+.menu-principal .menu li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 200px;
+    background: #1f2937;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+}
+
+/* Mostrar submenú al pasar el ratón */
+.menu-principal .menu li:hover>ul {
+    display: block;
+}
+
+/* Elementos del submenú */
+.menu-principal .menu li ul li {
+    width: 100%;
+    min-height: auto;
+}
+
+/* Enlaces del submenú */
+.menu-principal .menu li ul li a {
+    display: block;
+    padding: 12px 18px;
+    color: #ffffff;
+    text-decoration: none;
+    white-space: nowrap;
+    border-radius: 0;
+}
+
+/* Hover en enlaces del submenú */
+.menu-principal .menu li ul li a:hover {
+    background: #2563eb;
+}
+
+/* Submenús de segundo nivel */
+.menu-principal .menu li ul li ul {
+    top: 0;
+    left: 100%;
+    border-radius: 10px;
+}
+
+/* Flechita para elementos con hijos */
+.menu-principal .menu li.menu-item-has-children>a::after {
+    content: " ▼";
+    font-size: 0.7em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-principal .menu {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .menu-principal .menu li ul {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border-radius: 8px;
+        margin-top: 4px;
+    }
+
+    .menu-principal .menu li:hover>ul {
+        display: block;
+    }
+
+    .menu-principal .menu li ul li ul {
+        position: static;
+    }
+
+    .menu-principal .menu li.menu-item-has-children>a::after {
+        content: " ▼";
+        float: right;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-principal .menu>li>ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 240px;
+        min-width: 240px;
+        padding: 8px 0;
+        border-radius: 0 0 10px 10px;
+    }
+
+    .menu-principal .menu>li:hover>ul {
+        display: block;
+    }
+
+    .menu-principal .menu>li>ul>li {
+        width: 100%;
+    }
+
+    .menu-principal .menu li ul li ul {
+        top: 0;
+        left: 100%;
+        border-radius: 10px;
+    }
+
+    .menu-principal .menu li ul li.menu-item-has-children>a::after {
+        content: " >";
+        float: right;
+    }
+}
